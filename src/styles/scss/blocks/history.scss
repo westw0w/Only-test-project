@@ -1,0 +1,349 @@
+@use "@/styles/scss/global/variables" as *;
+@use "@/styles/scss/global/mixins" as *;
+
+.history {
+  position: relative;
+  padding: 170px 80px 104px;
+
+
+  @include vp-1023 {
+    padding: 59px 0 32px;
+  }
+
+  &__title {
+    position: relative;
+    max-width: 353px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 120%;
+    margin: 0 0 96px 0;
+
+    @include vp-1023 {
+      max-width: 150px;
+      font-size: 20px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -78px;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, $color-original-blue, $color-royal-pink);
+
+      @include vp-1023 {
+        display: none;
+      }
+    }
+  }
+
+  &__dates {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    justify-self: center;
+    gap: 133px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 137px 0;
+
+    @include vp-1023 {
+      gap: 37px;
+      margin: 0 0 58px 0;
+    }
+  }
+
+  &__dates-start,
+  &__dates-end {
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 160px;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    @include vp-1023 {
+      font-size: 56px;
+      line-height: 72px;
+    }
+  }
+
+  &__dates-start {
+    color: $color-iris;
+  }
+
+  &__dates-end {
+    color: $color-fuschia;
+  }
+
+  &__category-list {
+    position: absolute;
+    z-index: 1;
+    top: 480px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 530px;
+    height: 530px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid $color-black-blue-20;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__category-btn {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: transparent;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: $color-black-blue;
+    border: none;
+    padding: 0;
+    color: $color-black-blue;
+    text-indent: -9999px;
+    transition: width $transition-300, height $transition-300;
+
+
+    &--active,
+    &:hover {
+      opacity: 1;
+      width: 56px;
+      height: 56px;
+      background-color: $color-diamond;
+      border: 1px solid $color-vintage-blue-50;
+      text-indent: 0;
+    }
+
+    &--active .history__category-name {
+      opacity: 1;
+    }
+  }
+
+  &__category-name {
+    position: absolute;
+    left: 76px;
+    opacity: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    transition: opacity ease-in 0.8s 1.2s;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 0 56px 0;
+
+    @include vp-1023 {
+      position: absolute;
+      bottom: 13px;
+      left: 0;
+      margin: 0;
+      gap: 10px;
+    }
+  }
+
+  &__nav-category {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-black-blue;
+  }
+
+  &__nav-wrapper {
+    display: flex;
+    gap: 20px;
+
+    @include vp-1023 {
+      gap: 8px;
+    }
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid $color-black-blue-50;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: background-color $transition-300;
+
+    @include vp-1023 {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    &--colored {
+      width: 40px;
+      height: 40px;
+      font-size: 90%;
+      line-height: 1;
+      background-color: $color-white;
+      border: none;
+      color: $color-original-blue;
+      box-shadow: 0px 0px 15px rgba(56, 119, 238, 0.1);
+
+      @include vp-1023 {
+        display: none;
+      }
+    }
+  }
+
+  &__swiper-wrapper {
+    position: relative;
+    opacity: 1;
+
+    @include vp-1023 {
+      margin: 0 0 40px 0;
+    }
+  }
+
+  &__swiper-button--prev {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+  }
+
+  &__swiper-button--next {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    right: -60px;
+    transform: translateY(-50%);
+  }
+
+  &__news {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__news-year {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: $color-original-blue;
+
+    @include vp-1023 {
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  &__news-description {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+
+    @include vp-1023 {
+      font-size: 14px;
+      line-height: 145%;
+    }
+  }
+
+  &__bg-lines {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: flex;
+    justify-content: space-between;
+
+    @include vp-1023 {
+      position: static;
+      margin: 0 0 20px 0;
+    }
+
+    // Горизонтальная линия
+    &::before {
+      content: "";
+      position: absolute;
+      top: 480px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      opacity: 0.1;
+      background-color: $color-black-blue;
+
+      @include vp-1023 {
+        position: static;
+        top: unset;
+        left: unset;
+        background-color: $color-light-blue;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__bg-line {
+    width: 1px;
+    height: 100%;
+    opacity: 0.1;
+    background-color: $color-black-blue;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+}
+
+.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-pagination {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  transition: opacity $transition-300;
+  user-select: none;
+
+  @include vp-1023 {
+    display: block;
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: $color-black-blue;
+  opacity: 0.4;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $color-black-blue;
+  opacity: 1;
+}

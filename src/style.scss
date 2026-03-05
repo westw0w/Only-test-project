@@ -1,0 +1,11 @@
+@use "@/styles/scss/global/variables";
+@use "@/styles/scss/global/normalize";
+@use "@/styles/scss/global/mixins";
+@use "@/styles/scss/global/fonts";
+@use "@/styles/scss/global/reboot";
+@use "@/styles/scss/global/container";
+@use "@/styles/scss/global/visually-hidden";
+
+@use "@/styles/scss/blocks/history";
+@use "@/styles/scss/blocks/loader";
+@use "@/styles/scss/blocks/swiper";
